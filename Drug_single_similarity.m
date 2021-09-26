@@ -24,13 +24,12 @@ for cv = 1:CV
     one_negative_idx = find(crossval_negative_idx == cv);
     train_interaction_matrix(positive(one_positive_idx)) = 0;
     
-    K2 = [];
-    %K2(:,:,1) = predictSimMatdcChemical;  
-    %K2(:,:,2) = predictSimMatdcGo;
-    K2(:,:,1) = interaction_similarity(train_interaction_matrix,'2' );
-    %K_COM2 = SKF({K2(:,:,1),K2(:,:,2),K2(:,:,3)},15,10,0.2);    
+    K1 = predictSimMatdcChemical;                                          %Drug_Chemical_Similarity
+    K2 = predictSimMatdcGo;                                                %Drug_Functional_Similarity
+    K3 = interaction_similarity(train_interaction_matrix,'2' );            %Drug_Association_Similarity
+    K_COM2 = SKF({K1,K2,K3},15,10,0.2);                                    %Drug_SKF     
     
-    score_matrix = LapRLS_dru(K2(:,:,1),train_interaction_matrix,lamuda);
+    score_matrix = LapRLS_dru(K_COM2,train_interaction_matrix,lamuda);     %依次将单一相似性或SKF的K_COM2放入第一个参数
     
     final(positive(one_positive_idx)) = score_matrix(positive(one_positive_idx));
     final(negative(one_negative_idx)) = score_matrix(negative(one_negative_idx));
