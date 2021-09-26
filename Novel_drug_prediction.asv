@@ -1,13 +1,12 @@
-%function CVd_drug
-%CVd交叉验证，新药预测
-seed = [3 6 8 19 105];                                                                 %[3 6 8 19 51],1(851,286),2(848,280),3(859,275),5(844,272),6(857,280),7(853,279),8(859,279),9(856,282),10(854,279),12(855,271),13(851,275),14(853,272)15(855,276)16(851,268)17()18(850,267),19(857,281),32(856,283),45(853,278),48(858,279),51(858,280),105(859,279) is good
+function Novel_drug_prediction
+seed = 8;                                                                 %[3 6 8 19 51],1(851,286),2(848,280),3(859,275),5(844,272),6(857,280),7(853,279),8(859,279),9(856,282),10(854,279),12(855,271),13(851,275),14(853,272)15(855,276)16(851,268)17()18(850,267),19(857,281),32(856,283),45(853,278),48(858,279),51(858,280),105(859,279) is good
 %seed = 105; %or8
 CV = 10;                                                                      %5 is good
-[SeedAUC,SeedAUPR] = cross_validation(seed,CV);
-%end
+cross_validation(seed,CV);
+end
 
-function [fiveSeedAUC,fiveSeedAUPR] = cross_validation(seed,CV)
-load Enzyme_data
+function cross_validation(seed,CV)
+load PREDICT
 lamuda=2^(-16);                                                             %15 is best 
 beta=0.4; 
 %interaction_matrix = lrssladmatdgc';
