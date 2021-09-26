@@ -14,43 +14,41 @@ interMat = predictAdMatdgc;
 positive = find(interMat == 1);
 negative = find(interMat == 0);
 
-for seedIndex = 1 : length(seed)
-    rand('state',seed(seedIndex));
-    crossval_positive_idx = crossvalind('Kfold',interMat(positive),CV);
-    crossval_negative_idx = crossvalind('Kfold',interMat(negative),CV);
-    final = zeros(dn,dr);
-    
-    for fold=1:CV
-        
-        fprintf('round %d validation\n',fold);
-        trainMat = interMat;
-        one_positive_idx = find(crossval_positive_idx == fold);
-        one_negative_idx = find(crossval_negative_idx == fold);
-        trainMat(positive(one_positive_idx)) = 0;
-        
-        K1 = [];
-        K1(:,:,1)=predictSimMatdg;
-        K1(:,:,2)=interaction_similarity(trainMat,'1' );
-        K_COM1=SKF({K1(:,:,1),K1(:,:,2)},10,10,0.7);                       
-        
-        K2 = [];
-        K2(:,:,1)=predictSimMatdcChemical; 
-        K2(:,:,2)=predictSimMatdcGo;
-        K2(:,:,3)=interaction_similarity(trainMat,'2' );
-        K_COM2=SKF({K2(:,:,1),K2(:,:,2),K2(:,:,3)},15,10,0.2);        
-        
-        F = LapRLS(K_COM1,K_COM2,trainMat,lamuda,beta);
-        final(positive(one_positive_idx)) = F(positive(one_positive_idx));
-        final(negative(one_negative_idx)) = F(negative(one_negative_idx));
-        
-    end
-    
-    [~,~,~,AUC] = perfcurve(interMat(:),final(:),1);
-    [~,~,~,AUPR] = perfcurve(interMat(:),final(:),1, 'xCrit', 'reca', 'yCrit', 'prec');
+rand('state',seed);
+crossval_positive_idx = crossvalind('Kfold',interMat(positive),CV);
+crossval_negative_idx = crossvalind('Kfold',interMat(negative),CV);
+final = zeros(dn,dr);
 
+for fold=1:CV
+    
+    fprintf('round %d validation\n',fold);
+    trainMat = interMat;
+    one_positive_idx = find(crossval_positive_idx == fold);
+    one_negative_idx = find(crossval_negative_idx == fold);
+    trainMat(positive(one_positive_idx)) = 0;
+    
+    K1 = [];
+    K1(:,:,1)=predictSimMatdg;
+    K1(:,:,2)=interaction_similarity(trainMat,'1' );
+    K_COM1=SKF({K1(:,:,1),K1(:,:,2)},10,10,0.7);
+    
+    K2 = [];
+    K2(:,:,1)=predictSimMatdcChemical;
+    K2(:,:,2)=predictSimMatdcGo;
+    K2(:,:,3)=interaction_similarity(trainMat,'2' );
+    K_COM2=SKF({K2(:,:,1),K2(:,:,2),K2(:,:,3)},15,10,0.2);
+    
+    F = LapRLS(K_COM1,K_COM2,trainMat,lamuda,beta);
+    final(positive(one_positive_idx)) = F(positive(one_positive_idx));
+    final(negative(one_negative_idx)) = F(negative(one_negative_idx));
+    
 end
+
+[~,~,~,AUC] = perfcurve(interMat(:),final(:),1);
+[~,~,~,AUPR] = perfcurve(interMat(:),final(:),1, 'xCrit', 'reca', 'yCrit', 'prec');
 fprintf('CV=10 AUC: %.3f  AUPR: %.3f\n', AUC, AUPR)
 end
+
 
 function [LapA] = LapRLS(W1,W2,inter3, lambda, beta)
 [num_1,num_2] = size(inter3);
