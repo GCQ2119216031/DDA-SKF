@@ -1,23 +1,24 @@
-%function CVp_disease_subspace
+function Drug_single_similarity
 seed = 8;                                                                  
 CV = 10;                                                                
-%[AUC, AUPR] = cross_validation(seed,CV);
-%end
+cross_validation(seed,CV);
+end
 
-%function [FINAL_AUC , FINAL_AUPR] = cross_validation(seed,CV)
-load Enzyme_data.mat;
-lamuda=2^(-16);                                                          
-
-positive = find(predictAdMatdgc == 1);
-negative = find(predictAdMatdgc == 0);
+function cross_validation(seed,CV)
+load PREDICT;
+lamuda=2^(-16);
+interMat = predictAdMatdgc;
+[dn,dr] = size(interMat);
+positive = find(interMat == 1);
+negative = find(interMat == 0);
 rand('seed', seed);
-crossval_positive_idx = crossvalind('Kfold',predictAdMatdgc(positive),CV);
-crossval_negative_idx = crossvalind('Kfold',predictAdMatdgc(negative),CV);
-final = zeros(313,593);
+crossval_positive_idx = crossvalind('Kfold',interMat(positive),CV);
+crossval_negative_idx = crossvalind('Kfold',interMat(negative),CV);
+final = zeros(dn,dr);
 
 for cv = 1:CV
     fprintf('round %d validation\n',cv);
-    train_interaction_matrix = predictAdMatdgc;
+    train_interaction_matrix = interMat;
     
     one_positive_idx = find(crossval_positive_idx == cv);
     one_negative_idx = find(crossval_negative_idx == cv);
@@ -25,25 +26,23 @@ for cv = 1:CV
     
     K2 = [];
     K2(:,:,1) = predictSimMatdcChemical;  
-    K2(:,:,2) = predictSimMatdcGo;
-    K2(:,:,3) = interaction_similarity(train_interaction_matrix,'2' );
-    K_COM2 = SKF({K2(:,:,1),K2(:,:,2),K2(:,:,3)},15,10,0.2);                  
+    %K2(:,:,2) = predictSimMatdcGo;
+    %K2(:,:,3) = interaction_similarity(train_interaction_matrix,'2' );
+    %K_COM2 = SKF({K2(:,:,1),K2(:,:,2),K2(:,:,3)},15,10,0.2);    
     
-    %normK1 = normFun(K_COM1);
-    
-    score_matrix = LapRLS_pro(K_COM2,train_interaction_matrix,lamuda);
+    score_matrix = LapRLS_dru(K2(:,:,1),train_interaction_matrix,lamuda);
     
     final(positive(one_positive_idx)) = score_matrix(positive(one_positive_idx));
     final(negative(one_negative_idx)) = score_matrix(negative(one_negative_idx));
     
 end
 
-[~,~,~,AUC] = perfcurve(predictAdMatdgc(:),final(:),1);
-[Recall,Precision,~,AUPR] = perfcurve(predictAdMatdgc(:),final(:),1, 'xCrit', 'reca', 'yCrit', 'prec');
+[~,~,~,AUC] = perfcurve(interMat(:),final(:),1);
+[~,~,~,AUPR] = perfcurve(interMat(:),final(:),1, 'xCrit', 'reca', 'yCrit', 'prec');
 fprintf('AUC: %.3f  AUPR: %.3f\n',AUC, AUPR);
+end
 
-
-function [LapA] = LapRLS_pro(W2,inter3, lambda)
+function [LapA] = LapRLS_dru(W2,inter3, lambda)
 [~,num_2] = size(inter3);
 
 S_2 = W2;
