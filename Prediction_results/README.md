@@ -4,7 +4,7 @@ Created by ChuQiao-Gao
 
 Environment: Python3
 
-1. The relationship between each drug and their top-5 indications was verified in CTD.
+1.The relationship between each drug and their top-5 indications was verified in CTD.
 
 (1)'关联汇总.csv' is a set of the relationship between drugs and diseases from CTD.
 
@@ -12,7 +12,7 @@ Environment: Python3
 
 (3)Running 'Verify_Drug_top_5.py' to verify the prediction relationship. The results will be saved to 'Drug_top_5_results.txt'.
 
-2. The relationship between each orphan drug and their top-5 indications was verified in CTD.
+2.The relationship between each orphan drug and their top-5 indications was verified in CTD.
 
 (1)'关联汇总.csv' is a set of the relationship between drugs and diseases from CTD.
 
