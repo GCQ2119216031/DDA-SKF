@@ -25,9 +25,9 @@ for cv = 1:CV
     train_interaction_matrix(positive(one_positive_idx)) = 0;
     
     K2 = [];
-    K2(:,:,1) = predictSimMatdcChemical;  
+    %K2(:,:,1) = predictSimMatdcChemical;  
     %K2(:,:,2) = predictSimMatdcGo;
-    %K2(:,:,3) = interaction_similarity(train_interaction_matrix,'2' );
+    K2(:,:,1) = interaction_similarity(train_interaction_matrix,'2' );
     %K_COM2 = SKF({K2(:,:,1),K2(:,:,2),K2(:,:,3)},15,10,0.2);    
     
     score_matrix = LapRLS_dru(K2(:,:,1),train_interaction_matrix,lamuda);
@@ -99,8 +99,7 @@ end
 
 function newW = FindDominateSet(W,K)
 [m,n]=size(W);
-[YW,IW1] = sort(W,2,'descend');
-clear YW;
+[~,IW1] = sort(W,2,'descend');
 newW=zeros(m,n);
 temp=repmat((1:n)',1,K);
 I1=(IW1(:,1:K)-1)*m+temp;
@@ -138,7 +137,7 @@ end
 
 function result = interaction_similarity(inter2,type)
 [tar_num, dru_num] = size(inter2);
-total = sum(sum(inter2));                     %inter2的2范式为什么是这个？应该这样：norm(inter2,2)
+total = sum(sum(inter2));
 if type == '1'
     result=zeros(tar_num,tar_num); 
     gama=tar_num/total;
@@ -157,64 +156,6 @@ else
             dis=pdist2(inter2(:,i)',inter2(:,j)','squaredeuclidean');
             result(i,j)=exp(-gama*sum(dis));
             result(j,i)=exp(-gama*sum(dis));
-        end
-    end
-end
-end
-
-function [ result ] = normFun( M )
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
-    num = size(M,1);
-    nM = zeros(num,num);
-    result = zeros(num,num);
-    
-    for i = 1:num
-        nM(i,i) = sum(M(i,:));
-    end
-
-    for i = 1:num
-        rsum = nM(i,i);
-        for j = 1:num
-            csum = nM(j,j);
-            if((rsum==0)||(csum==0))
-                result(i,j) = 0;
-            else
-                result(i,j) = M(i,j)/sqrt(rsum*csum);
-            end
-        end
-    end
-    
-end
-
-function d = kernel_Hamads(adjmat,dim)
-%tju cs for bioinformatics 
-% Calculates the Hamming distance kernel from a graph adjacency 
-% matrix. If tha graph is unipartite, ka = kb.
-%INPUT: 
-% adjmat : binary adjacency matrix
-% dim    : dimension (1 - rows, 2 - cols)
-%OUTPUT:
-% d : kernel matrix for adjmat over dimension 'dim'
-    y = adjmat;
-    % Graph based kernel
-	if dim == 1
-        ga = squareform(pdist(y,'hamming'));
-    else
-        ga = squareform(pdist(y','hamming'));
-    end
-    d=ones(size(ga))-ga;  
-end
-
-function result = target_sim_bla(algmt_matrix)
-[tar_num,~] = size(algmt_matrix);
-result=zeros(tar_num,tar_num);                    
-for i=1:tar_num
-    for j=1:tar_num
-        if i == j
-            result(i,j) = 1;
-        else
-            result(i,j) = algmt_matrix(i,j) / (sqrt(algmt_matrix(i,i)) * sqrt(algmt_matrix(j,j)));
         end
     end
 end
