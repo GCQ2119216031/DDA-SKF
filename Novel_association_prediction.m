@@ -116,8 +116,8 @@ function newW = FindDominateSet(W,K)
 [m,n]=size(W);
 [~,IW1] = sort(W,2,'descend');
 newW=zeros(m,n);
-temp=repmat((1:n)',1,K);             %包含列向量的水平堆栈
-I1=(IW1(:,1:K)-1)*m+temp;            %前k个相似向量的索引值
+temp=repmat((1:n)',1,K);
+I1=(IW1(:,1:K)-1)*m+temp;
 newW(I1(:))=W(I1(:));
 newW=newW./repmat(sum(newW,2),1,n);
 clear IW1;
@@ -152,7 +152,7 @@ end
 
 function result = interaction_similarity(inter2,type)
 [rna_num, pro_num] = size(inter2);
-total = sum(sum(inter2));                     %inter2的2范式为什么是这个？应该这样：norm(inter2,2)
+total = sum(sum(inter2));
 if type == '1'
     result=zeros(rna_num,rna_num); 
     gama=rna_num/total;
