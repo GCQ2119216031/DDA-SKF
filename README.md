@@ -42,7 +42,7 @@ Under the 'data' folder, 'PREDICT.mat' include 593 drug names and 313 disease OM
 ### 4.Predicting top-5 diseases for every orphan drug
 
 * ‘OrphanDrug.mat’: providing drug similarity kernels and each orphan drug association matrix(for example, named ‘predictAdmatOrphanDru187’). Besides, it provides drug names and disease OMIM IDs for outputting predictional associations. For each orphan drug, we have obtained their prediction matrix (for example, named ‘Celecoxib_score_matrix’).
-* Each orphan drug association matrix had been removed all of their known associations.
+* Each orphan drug association matrix had been removed all of their known associations before making predictions.
 * ‘PredictOrphandrug.m’: Running this code to obtain prediction matrix of an orphan drug.
 * ‘VerifyOrphanResults.m’: Running this code to calculate top-5 indications for an orphan drug.
 
