@@ -1,5 +1,5 @@
 # DDA-SKF
-This part of code is written in Python 3.8.
+This part of code could verify predictional associations. We need to configure a Python3 environment to run 'Orphan_drug_prediction.py' and 'Verify_Drug_top_5.py
 
 Putting the data and code in the same folder and running the code.
 
