@@ -15,7 +15,7 @@ and
 
 * 'Associations.csv' is a set of the relationship between drugs and diseases from CTD.
 
-* 'drug593-dis5.csv' was based on running the code 'DrugTop5_Prediction'.
+* 'drug593-dis5.csv' was based on running the code 'DrugTop5_Prediction.m' on MATLAB platform.
 
 * Running 'Verify_Drug_top_5.py' to verify the prediction relationship. The results will be saved to 'Drug_top_5_results.txt'.
 
@@ -23,7 +23,7 @@ and
 
 * 'Associations.csv' is a set of the relationship between drugs and diseases from CTD.
 
-* 'col187DB00482-dis5.csv','col228DB00563-dis5.csv' and 'col428DB00997-dis5.csv' were based on the results of code 'Prediction_OrphanDrug'.
+* 'col187DB00482-dis5.csv','col228DB00563-dis5.csv' and 'col428DB00997-dis5.csv' were based on running the code 'Prediction_OrphanDrug.m' on MATLAB platform.
 
 * 'col187DB00482-dis5.csv' is the prediction results of orphan drug Celecoxib.
 
