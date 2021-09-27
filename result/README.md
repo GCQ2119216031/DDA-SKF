@@ -1,4 +1,5 @@
 # DDA-SKF
+This part of code is written in Python 3.8
 
 ## 1.Verifying prediction results for each drug.
 
