@@ -15,7 +15,7 @@ and
 
 * 'Associations.csv' is a set of the relationship between drugs and diseases from CTD.
 
-* 'drug593-dis5.csv' was based on the result of 'DrugTop5_Prediction' folder.
+* 'drug593-dis5.csv' was based on running the code 'DrugTop5_Prediction'.
 
 * Running 'Verify_Drug_top_5.py' to verify the prediction relationship. The results will be saved to 'Drug_top_5_results.txt'.
 
