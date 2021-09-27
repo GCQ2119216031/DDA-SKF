@@ -7,6 +7,8 @@ Commands in command line mode:
 
     python Verify_Drug_top_5.py
 
+and
+
     python Orphan_drug_prediction.py
 
 ## 1.Verifying prediction results for each drug.
