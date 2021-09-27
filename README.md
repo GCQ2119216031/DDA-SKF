@@ -50,13 +50,13 @@ Under the 'data' folder, 'PREDICT.mat' include 593 drug names and 313 disease OM
 #### Verifying prediction results for each drug
 
 * ‘Associations.csv': It is a set of the relationship between drugs and diseases from CTD.
-* 'drug593-dis5.csv': It based on running the code 'DrugTop5_Prediction'.
+* 'drug593-dis5.csv': It based on running the code 'drug_top5_resluts.m' on MATLAB platfrom.
 * ‘Verify_Drug_top_5.py’: Running this code to verify the prediction relationship. The results will be saved to 'Drug_top_5_results.txt'.
 
 #### Verifying prediction results for orphan drugs
 
 * ‘Associations.csv': It is a set of the relationship between drugs and diseases from CTD.
-* 'col187DB00482-dis5.csv','col228DB00563-dis5.csv' and 'col428DB00997-dis5.csv': these tables based on the results of code 'Prediction_OrphanDrug'.
+* 'col187DB00482-dis5.csv','col228DB00563-dis5.csv' and 'col428DB00997-dis5.csv': these tables based on running the code 'VerifyOrphanResults.m' on MATLAB platfrom.
 * 'col187DB00482-dis5.csv': It is the prediction results of orphan drug Celecoxib.
 * 'col228DB00563-dis5.csv': It is the prediction results of orphan drug Methotrexate.
 * 'col428DB00997-dis5.csv': It is the prediction results of orphan drug Doxorubicin.
