@@ -1,5 +1,13 @@
 # DDA-SKF
-This part of code is written in Python 3.8
+This part of code is written in Python 3.8.
+
+Putting the data and code in the same folder and running the code.
+
+Commands in command line mode:
+
+python Verify_Drug_top_5.py
+
+python Orphan_drug_prediction.py
 
 ## 1.Verifying prediction results for each drug.
 
