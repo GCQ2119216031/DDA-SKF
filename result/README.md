@@ -5,9 +5,9 @@ Putting the data and code in the same folder and running the code.
 
 Commands in command line mode:
 
-python Verify_Drug_top_5.py
+    python Verify_Drug_top_5.py
 
-python Orphan_drug_prediction.py
+    python Orphan_drug_prediction.py
 
 ## 1.Verifying prediction results for each drug.
 
