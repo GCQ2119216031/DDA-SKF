@@ -7,7 +7,7 @@ MATLAB R2019b
 
 python 3.8
 
-*Predicting drug-disease associations need to be work on MATLAB platform. Verifying predicational associations need to configure a Python 3 environment to run 'Orphan_drug_prediction.py' and 'Verify_Drug_top_5.py'*
+Predicting drug-disease associations need to be work on MATLAB platform. Verifying predicational associations need to configure a Python 3 environment to run 'Orphan_drug_prediction.py' and 'Verify_Drug_top_5.py'
 
 ## Dataset
 
