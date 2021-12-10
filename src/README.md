@@ -13,7 +13,7 @@ Under the 'data' folder, 'PREDICT.mat' include 593 drugs and 313 diseases. Meanw
 
 ## Main modules
 
-### 1.Two methods to evaluate the model DDA-SKF
+### 1.Three methods to evaluate the model DDA-SKF
 
 #### Novel association prediction
 
