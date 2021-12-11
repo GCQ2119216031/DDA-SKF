@@ -20,26 +20,27 @@ Under the 'data' folder, 'PREDICT.mat' include 593 drugs and 313 diseases. Meanw
 #### Novel association prediction
 
 * 'PREDICT.mat': providing drug similarity kernels, a disease similarity kernel and an association matrix for this part.
-* 'PREDICT_divide.mat': providing data-division for novel association prediction.
+* 'PREDICT_divide.mat': providing data-division for novel association prediction. A dataset was divided by using five random seeds.
 * 'Novel_association_prediction.m': Running this code to evaluate performance of our model on predicting potential associations. 
 
 #### Novel drug prediction
 
 * 'PREDICT.mat': providing drug similarity kernels, a disease similarity kernel and an association matrix for this part.
-* 'PREDICT_divide.mat': providing data-division for novel drug prediction.
+* 'PREDICT_divide.mat': providing data-division for novel drug prediction. A dataset was divided by using five random seeds.
 * 'Novel_drug_prediction.m': Running this code to evaluate performance of our model for predicting new drugs indications. 
 
 #### Fivefold Cross-Validation (5-CV)
 
 * 'PREDICT.mat': providing drug similarity kernels, a disease similarity kernel and an association matrix for this part.
 * 'LRSSL.mat': providing drug similarity kernels, a disease similarity kernel and an association matrix for this part.
-* 'PREDICT_divide.mat': providing data-division for five cross-validation.
-* 'LRSSL_divide.mat': providing data-division for five cross-validation.
+* 'PREDICT_divide.mat': providing data-division for five cross-validation. A dataset was divided by using five random seeds.
+* 'LRSSL_divide.mat': providing data-division for five cross-validation. A dataset was divided by using five random seeds.
 * 'Five_CV_result.m': Running this code to estimate the prediction performance of DDA-SKF model.
 
 ### 2.Comparing single similarity kernel and SKF
 
 * 'PREDICT.mat': providing drug similarity kernels, a disease similarity kernel and an association matrix for this part.
+* 'Single_divide.mat ': providing data-division for comparing single similarity kernel and SKF. A dataset was divided by using five different random seeds.
 * 'Drug_single_similarity.m': Running this code to calculate evaluation metrics with every single drug similarity kernel or SKF.
 * 'Disease_single_similarity.m': Running this code to calculate evaluation metrics with every single disease similarity kernel or SKF.
 * 'Gragh_Drg_singleSim.mat': providing data for drawing receiver operating characteristics curve and precision-recall curve in drug subspace.
