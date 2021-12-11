@@ -22,7 +22,7 @@ dis_i = 8;
 
 % PREDICT dataset: using disname and drugname
 % LRSSL dataset: using lrsslDisName and lrsslDrgName
-fprintf('Disease: %s\n',lrsslDisName(dis_i));
-fprintf('Predict_Drug: %s\n',lrsslDrgName(predictInter(dis_i,:)));
+fprintf('Disease: %s\n',disname(dis_i));
+fprintf('Predict_Drug: %s\n',drugname(predictInter(dis_i,:)));
 
 
