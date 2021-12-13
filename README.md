@@ -20,27 +20,27 @@ Under the 'data' folder, 'PREDICT.mat' include 593 drugs and 313 diseases. Meanw
 #### Novel association prediction
 
 * 'PREDICT.mat': Providing drug similarity kernels, a disease similarity kernel and an association matrix for this part.
-* 'PREDICT_divide.mat': Providing data-division for novel association prediction. A dataset was divided by using five random seeds.
+* 'PREDICT_divide.mat': Providing data-division for novel association prediction. A dataset was divided for five times with different random data partition schemes.
 * 'Novel_association_prediction.m': Running this code to evaluate performance of our model on predicting potential associations. 
 
 #### Novel drug prediction
 
 * 'PREDICT.mat': Providing drug similarity kernels, a disease similarity kernel and an association matrix for this part.
-* 'PREDICT_divide.mat': Providing data-division for novel drug prediction. A dataset was divided by using five random seeds.
+* 'PREDICT_divide.mat': Providing data-division for novel drug prediction. A dataset was divided for five times with different random data partition schemes.
 * 'Novel_drug_prediction.m': Running this code to evaluate performance of our model for predicting new drugs indications. 
 
 #### Fivefold Cross-Validation (5-CV)
 
 * 'PREDICT.mat': Providing drug similarity kernels, a disease similarity kernel and an association matrix for this part.
 * 'LRSSL.mat': Providing drug similarity kernels, a disease similarity kernel and an association matrix for this part.
-* 'PREDICT_divide.mat': Providing data-division for five cross-validation. A dataset was divided by using five random seeds.
-* 'LRSSL_divide.mat': Providing data-division for five cross-validation. A dataset was divided by using five random seeds.
+* 'PREDICT_divide.mat': Providing data-division for five cross-validation. A dataset was divided for five times with different random data partition schemes.
+* 'LRSSL_divide.mat': Providing data-division for five cross-validation. A dataset was divided for five times with different random data partition schemes.
 * 'Five_CV_result.m': Running this code to estimate the prediction performance of DDA-SKF model.
 
 ### 2.Comparing single similarity kernel and SKF
 
 * 'PREDICT.mat': Providing drug similarity kernels, a disease similarity kernel and an association matrix for this part.
-* 'Single_divide.mat ': Providing data-division for comparing single similarity kernel and SKF. A dataset was divided by using five different random seeds.
+* 'Single_divide.mat ': Providing data-division for comparing single similarity kernel and SKF. A dataset was divided for five times with different random data partition schemes.
 * 'Drug_single_similarity.m': Running this code to calculate evaluation metrics with every single drug similarity kernel or SKF.
 * 'Disease_single_similarity.m': Running this code to calculate evaluation metrics with every single disease similarity kernel or SKF.
 * 'Gragh_Drg_singleSim.mat': Providing data for drawing receiver operating characteristics curve and precision-recall curve in drug subspace.
