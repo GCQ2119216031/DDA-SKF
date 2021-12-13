@@ -1,5 +1,5 @@
 # DDA-SKF
-In this work, we used Similarity Kernel Fusion(SKF) and Laplacian regularized least squares (LapRLS) algorithms to predict uncovered drug-disease associations. 
+In this work, we used Similarity Kernel Fusion(SKF) and Laplacian Regularized Least Squares (LapRLS) algorithms to predict uncovered drug-disease associations. 
 
 ## Dependency
 
@@ -11,7 +11,7 @@ Predicting drug-disease associations need to be work on MATLAB platform. Verifyi
 
 ## Dataset
 
-Under the 'data' folder, 'PREDICT.mat' include 593 drugs and 313 diseases. Meanwhile, 'PREDICT.mat' provide two drug similarity kernels, one disease similarity kernel and the known association matrix for DDA-SKF. 'LRSSL.mat' includes 763 drugs and 681 diseases. 'LRSSL.mat' provides two drug similarity kernels, one disease similarity kernel and the known association matrix for DDA-SKF.
+Under the 'data' folder, 'PREDICT.mat' include 593 drugs and 313 diseases. Meanwhile, 'PREDICT.mat' provide two drug similarity kernels, one disease similarity kernel and the known association matrix for DDA-SKF. 'OrphanDrug.mat' provide drug similarity kernels, a association matrix of each orphan drug, drug names and disease OMIM IDs. 'LRSSL.mat' includes 763 drugs and 681 diseases. 'LRSSL.mat' provides two drug similarity kernels, one disease similarity kernel and the known association matrix for DDA-SKF.
 
 ## Main modules
 
